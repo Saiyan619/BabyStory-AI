@@ -45,7 +45,6 @@ const Login = () => {
 
   const handleGoogleLogin = () => {
     console.log('Starting Google login');
-    setLoading(true);
     authService.googleAuth();
   };
 
@@ -90,7 +89,7 @@ const Login = () => {
               onClick={handleGoogleLogin}
               className='btn btn-primary mt-5 w-full sm:w-3/4'
             >
-              Sign in with Google
+            <img className='w-5' src="./icons8-google(1).svg" alt="google icon" />  Sign in with Google
             </button>
             <div>
               <div>

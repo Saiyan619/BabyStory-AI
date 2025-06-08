@@ -5,9 +5,13 @@ import { useSettingsStore } from '../../../store/settingsStore'
 import UpdateSettingsModal from '../component/UpdateSettingsModal'
 import Loader from '../component/Loader'
 import { useEffect } from 'react'
+import { useUiStore } from '../../../store/UiStore'
+import AlertSucces from '../../../globalcomponents/AlertSucces'
 
 const DashboardSettings = () => {
   const settings = useSettingsStore((state) => state.settings)
+    const success = useUiStore((state) => state.success);
+  
   useEffect(() => {
  getSettings()
   }, [])
@@ -16,6 +20,8 @@ const DashboardSettings = () => {
 
   return (
     <div className='p-5 border'>
+            {success ? <AlertSucces /> : ""}
+      
       <h3 className='text-3xl font-semibold'>Settings</h3>
       
       {settings ? 

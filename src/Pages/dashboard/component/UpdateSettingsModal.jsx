@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
 import { updateSettings } from '../../../api/services/settingServices';
+import { useUiStore } from "../../../store/UiStore";
+
 
 const UpdateSettingsModal = () => {
+        const loading = useUiStore((state) => state.loading);
+  const setLoading = useUiStore((state) => state.setLoading);
+    const setMessage = useUiStore((state) => state.setMessage);
+    const success = useUiStore((state) => state.success);
+    const setSuccess = useUiStore((state) => state.setSuccess);
   const [childAge, setChildAge] = useState('');
   const [storyLength, setStoryLength] = useState('');
   const [voiceInput, setVoiceInput] = useState('');
 
   const handleUpdateSettings = async () => {
+        setLoading(true);
+    
     const payload = {};
 
     if (storyLength) payload.storyLength = storyLength.toLowerCase();
@@ -16,9 +25,14 @@ const UpdateSettingsModal = () => {
     try {
       await updateSettings(payload);
       console.log('Settings updated');
+      setMessage("Settings Updated🤗");
+      setSuccess(true);
+      setLoading(false);
+      setTimeout(() => setSuccess(false), 3000);
       document.getElementById('my_modal_1').close(); // close modal after success
     } catch (error) {
       console.error('Update failed:', error);
+            setLoading(false);
     }
   };
 
@@ -31,7 +45,6 @@ const UpdateSettingsModal = () => {
       >
         Update Settings
       </button>
-
       <dialog id="my_modal_1" className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg">Edit Settings</h3>
@@ -87,6 +100,8 @@ const UpdateSettingsModal = () => {
 
           <div className="modal-action">
             <button onClick={handleUpdateSettings} className="btn btn-accent">
+                            {loading ? <span className="loading loading-spinner"></span> : ""}
+
               Save
             </button>
             <form method="dialog">
