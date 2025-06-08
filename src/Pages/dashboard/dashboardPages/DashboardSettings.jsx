@@ -22,6 +22,10 @@ const DashboardSettings = () => {
         (<div>
            <div className='flex flex-col gap-3 mt-5'>
          <div>
+        <span className='text-lg font-bold'>Your Child Age</span>
+        <p>{settings.childAge}</p>
+            </div>
+            <div>
         <span className='text-lg font-bold'>Story Length</span>
         <p>{settings.storyLength}</p>
       </div>

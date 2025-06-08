@@ -13,6 +13,7 @@ import AuthCallback from './Pages/auth/AuthCallback';
 import DashboardSettings from './Pages/dashboard/dashboardPages/DashboardSettings';
 import DashboardHome from './Pages/dashboard/DashboardHome';
 import DashboardProfile from './Pages/dashboard/dashboardPages/DashboardProfile';
+import StoryPage from './Pages/dashboard/dashboardPages/StoryPage';
 // import { useAuthInitializer } from '../hooks/useAuthInitializer';
 function App() {
     // useAuthInitializer();
@@ -34,7 +35,8 @@ function App() {
         <Route path="/dashboard" element={<ProtectedRoutes><DashBoard /></ProtectedRoutes>}>
   <Route index element={<DashboardHome />} />
   <Route path="settings" element={<DashboardSettings />} />
-  <Route path="profile" element={<DashboardProfile />} />
+          <Route path="profile" element={<DashboardProfile />} />
+              <Route path=":id" element={<StoryPage />} />
 </Route>
       </Routes>
     </BrowserRouter>

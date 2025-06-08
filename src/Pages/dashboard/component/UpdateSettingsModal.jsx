@@ -1,24 +1,102 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { updateSettings } from '../../../api/services/settingServices';
 
 const UpdateSettingsModal = () => {
-  return (
-      <div>
-              {/* Open the modal using document.getElementById('ID').showModal() method */}
-<button className="btn btn-accent" onClick={()=>document.getElementById('my_modal_1').showModal()}>Update Settings</button>
-<dialog id="my_modal_1" className="modal">
-  <div className="modal-box">
-    <h3 className="font-bold text-lg">Hello!</h3>
-    <p className="py-4">Press ESC key or click the button below to close</p>
-    <div className="modal-action">
-      <form method="dialog">
-        {/* if there is a button in form, it will close the modal */}
-        <button className="btn">Close</button>
-      </form>
-    </div>
-  </div>
-</dialog>
-</div>
-  )
-}
+  const [childAge, setChildAge] = useState('');
+  const [storyLength, setStoryLength] = useState('');
+  const [voiceInput, setVoiceInput] = useState('');
 
-export default UpdateSettingsModal
+  const handleUpdateSettings = async () => {
+    const payload = {};
+
+    if (storyLength) payload.storyLength = storyLength.toLowerCase();
+    if (voiceInput) payload.voiceInput = voiceInput === 'Yes';
+    if (childAge) payload.childAge = parseInt(childAge);
+
+    try {
+      await updateSettings(payload);
+      console.log('Settings updated');
+      document.getElementById('my_modal_1').close(); // close modal after success
+    } catch (error) {
+      console.error('Update failed:', error);
+    }
+  };
+
+  return (
+    <div>
+      {/* Open the modal using document.getElementById('ID').showModal() method */}
+      <button
+        className="btn btn-accent"
+        onClick={() => document.getElementById('my_modal_1').showModal()}
+      >
+        Update Settings
+      </button>
+
+      <dialog id="my_modal_1" className="modal">
+        <div className="modal-box">
+          <h3 className="font-bold text-lg">Edit Settings</h3>
+
+          <div>
+            <fieldset className="fieldset">
+              <legend className="fieldset-legend">Change Age</legend>
+              <select
+                value={childAge}
+                onChange={(e) => setChildAge(e.target.value)}
+                className="select"
+              >
+                <option disabled value="">
+                  Pick Age
+                </option>
+                {[6, 7, 8, 9, 10, 11, 12].map((num) => (
+                  <option key={num}>{num}</option>
+                ))}
+              </select>
+            </fieldset>
+
+            <fieldset className="fieldset">
+              <legend className="fieldset-legend">Change Story Length</legend>
+              <select
+                value={storyLength}
+                onChange={(e) => setStoryLength(e.target.value)}
+                className="select"
+              >
+                <option disabled value="">
+                  Pick a Length
+                </option>
+                <option>Short</option>
+                <option>Medium</option>
+                <option>Long</option>
+              </select>
+            </fieldset>
+
+            <fieldset className="fieldset">
+              <legend className="fieldset-legend">Voice Narration</legend>
+              <select
+                value={voiceInput}
+                onChange={(e) => setVoiceInput(e.target.value)}
+                className="select"
+              >
+                <option disabled value="">
+                  Pick Choice
+                </option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </fieldset>
+          </div>
+
+          <div className="modal-action">
+            <button onClick={handleUpdateSettings} className="btn btn-accent">
+              Save
+            </button>
+            <form method="dialog">
+              <button className="btn btn-error">Cancel</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+    </div>
+  );
+};
+
+export default UpdateSettingsModal;

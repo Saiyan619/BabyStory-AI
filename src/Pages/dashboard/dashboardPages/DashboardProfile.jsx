@@ -4,6 +4,8 @@ import UpdateProfileModal from '../component/UpdateProfileModal';
 import { getAllGeneratedStories } from '../../../api/services/storyServices';
 import useStoryStore from '../../../store/storyStore';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
+
 const DashboardProfile = () => {
     const user = useAuthStore((state) => state.user);
     const pastStories = useStoryStore((state) => state.pastStories);
@@ -51,12 +53,15 @@ const DashboardProfile = () => {
                                 {/* <button className='btn btn-info'>
                                     <p>See more</p>
                                 </button> */}
-                                <div className='w-16  flex items-center justify-center group-hover:scale-105 transition-transform duration-200 bg-gradient-to-br from-pink-200 to-purple-200 rounded-lg'>
+                                <Link to={`/dashboard/${story._id}`} className='w-16 flex items-center justify-center group-hover:scale-105 transition-transform duration-200 bg-gradient-to-br from-pink-200 to-purple-200 rounded-lg'>
+                                       <div className='w-16  flex items-center justify-center group-hover:scale-105 transition-transform duration-200 bg-gradient-to-br from-pink-200 to-purple-200 rounded-lg'>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
 </svg>
 
                                 </div>
+                                </Link>
+                         
                             </div>
                         );
                     })}

@@ -17,7 +17,7 @@ const DashHomeHeader = () => {
           </h1>       
           <p>Create enchanting bedtime stories with the power of AI</p>
       </div>
-    </div>
+      </div>
   </div>
   )
 }
