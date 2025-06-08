@@ -92,7 +92,12 @@ const SignUp = () => {
               onClick={handleGoogleLogin}
               className="btn btn-primary mt-5 w-full sm:w-3/4"
             >
-                      <img className='w-5' src="./icons8-google(1).svg" alt="google icon" />    Signup with google
+              <img
+                className="w-5"
+                src="./icons8-google(1).svg"
+                alt="google icon"
+              />{" "}
+              Signup with google
             </button>
             <div>
               <span className="text-sm">Already have an account?</span>

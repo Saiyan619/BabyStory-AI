@@ -10,7 +10,6 @@ export default function ResetPassword() {
   const { token } = useParams();
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const message = useUiStore((state) => state.message);
   const setMessage = (state) => state.setMessage;
 
   const navigate = useNavigate();
@@ -32,7 +31,7 @@ export default function ResetPassword() {
 
   return (
     <div>
-      {success ? <AlertSucces message={message} /> : ""}
+      {success ? <AlertSucces /> : ""}
       {error ? <AlertError /> : ""}
       <Navbar />
       <h2 className="text-2xl font-semibold text-center">Reset Password</h2>
