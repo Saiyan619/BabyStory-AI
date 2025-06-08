@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+//This is my Zustand Store for my authentiction
 export const useAuthStore = create(
   persist(
     (set) => ({
@@ -13,7 +14,7 @@ export const useAuthStore = create(
       logout: () => set({ user: null, token: null }),
     }),
     {
-      name: "auth-storage", // stored in localStorage
+      name: "auth-storage", // stored in localStorage (making use of the "persist")
     }
   )
 );
