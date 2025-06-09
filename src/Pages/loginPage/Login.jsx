@@ -91,7 +91,7 @@ const Login = () => {
               ></span>
               Login
             </button>
-            <button
+            {/* <button
               onClick={handleGoogleLogin}
               className="btn btn-primary mt-5 w-full sm:w-3/4"
             >
@@ -101,7 +101,7 @@ const Login = () => {
                 alt="google icon"
               />{" "}
               Sign in with Google
-            </button>
+            </button> */}
             <div>
               <div>
                 <span className="text-sm">Dont have an account?</span>

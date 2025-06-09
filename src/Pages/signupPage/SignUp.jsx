@@ -6,6 +6,7 @@ import { useUiStore } from "../../store/UiStore";
 import AlertError from "../../globalcomponents/AlertError";
 
 const SignUp = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const loading = useUiStore((state) => state.loading);
@@ -14,6 +15,9 @@ const SignUp = () => {
   const setError = useUiStore((state) => state.setError);
   const navigate = useNavigate();
 
+  function handleNameChange(e) {
+    setName(e.target.value)
+  }
   function handleEmailChange(e) {
     setEmail(e.target.value);
   }
@@ -23,7 +27,11 @@ const SignUp = () => {
 
   const handleSignUp = async () => {
     setLoading(true);
-    const credentials = { email, password };
+    const credentials = { name, email, password };
+    if (name === "" && email === "" && password === "") {
+      setError(true)
+      setTimeout(() => setError(false), 3000);
+    }
     try {
       await signUp(credentials);
       setLoading(false);
@@ -88,7 +96,8 @@ const SignUp = () => {
               Signup
             </button>
 
-            <button
+            {/* Never using OAuth ever again cuz i dont know why the fuck i have to wait 4 fucking weeks to use the prod Mode */}
+            {/* <button
               onClick={handleGoogleLogin}
               className="btn btn-primary mt-5 w-full sm:w-3/4"
             >
@@ -98,7 +107,7 @@ const SignUp = () => {
                 alt="google icon"
               />{" "}
               Signup with google
-            </button>
+            </button> */}
             <div>
               <span className="text-sm">Already have an account?</span>
               <Link className="underline text-sm" to="/login">
