@@ -39,7 +39,7 @@ const Navbar = () => {
             <Link className="btn btn-primary" to="/dashboard">
               Dashboard
             </Link>
-            <Link className="btn btn-primary" to="/login">
+            <Link className="btn btn-primary mt-2" to="/login">
               Login
             </Link>
 
@@ -70,6 +70,10 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end gap-4 hidden md:flex">
+         <Link className="btn btn-primary" to="/dashboard">
+              Dashboard
+        </Link>
+        
         <Link className="btn btn-primary" to="/login">
           Login
         </Link>
