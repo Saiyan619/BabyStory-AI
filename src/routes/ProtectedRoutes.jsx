@@ -28,6 +28,7 @@ const ProtectedRoutes = ({ children }) => {
   if (!user && !userLoading) {
     return <Navigate to="/login" replace />;
   }
+  
 
   return children;
 };
