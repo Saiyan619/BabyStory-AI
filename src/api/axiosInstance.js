@@ -2,7 +2,9 @@ import axios from "axios";
 
 // Basically the baseUrl im fetching my api routes from(Which is from the backend)
 const api = axios.create({
+
   baseURL: import.meta.env.VITE_API_URL,
+
 });
 
 // Helps insert token to my bearer so i dont have keep writing this same particular code in every function requiring authentication
