@@ -43,6 +43,7 @@ const UpdateProfileModal = () => {
       >
         Update Profile
       </button>
+
       <dialog id="my_modal_1" className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg">Update Profile</h3>
