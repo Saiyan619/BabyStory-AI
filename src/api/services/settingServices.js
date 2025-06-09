@@ -4,7 +4,7 @@ import api from "../axiosInstance";
 // Get settings
 export const getSettings = async () => {
   try {
-    const response = await api.get("/parent/settings");
+    const response = await api.get("api/parent/settings");
     const setSettings = useSettingsStore.getState().setSettings;
     setSettings(response.data);
     return response.data;
@@ -17,7 +17,7 @@ export const getSettings = async () => {
 // Update settings
 export const updateSettings = async (updatedSettings) => {
   try {
-    const response = await api.put("/parent/settings", updatedSettings);
+    const response = await api.put("api/parent/settings", updatedSettings);
 
     // Update Zustand store
     const setSettings = useSettingsStore.getState().setSettings;

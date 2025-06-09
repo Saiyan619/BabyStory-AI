@@ -12,7 +12,7 @@ const auth = useAuthStore.getState();
 export const login = async (credentials) => {
   console.log("Logging in with credentials:", credentials);
   try {
-    const response = await api.post("/parent/login", credentials);
+    const response = await api.post("/api/parent/login", credentials);
     const auth = useAuthStore.getState();
     localStorage.setItem("token", response.data.token);
     auth.setToken(response.data.token);
@@ -25,7 +25,7 @@ export const login = async (credentials) => {
 // Register User
 export const signUp = async (credentials) => {
   try {
-    const response = await api.post("/parent/register", credentials);
+    const response = await api.post("/api/parent/register", credentials);
 
     const auth = useAuthStore.getState();
     localStorage.setItem("token", response.data.token);
@@ -54,7 +54,7 @@ export const Me = async () => {
   const auth = useAuthStore.getState();
 
   try {
-    const response = await api.get("/parent/me");
+    const response = await api.get("/api/parent/me");
     auth.setUser(response.data);
     auth.setUserLoading(false);
     return response.data;
@@ -71,7 +71,7 @@ export const Me = async () => {
 // update Me for updating thr user profile
 export const updateMe = async (data) => {
   try {
-    const response = await api.put("/parent/me", data);
+    const response = await api.put("/api/parent/me", data);
     auth.setUser(response.data.user);
     return response.data;
   } catch (error) {
@@ -82,7 +82,7 @@ export const updateMe = async (data) => {
 //Request Verification Email token
 export const requestVerificationToken = async (email) => {
   try {
-    const response = await api.post("/parent/verify-password/request", {
+    const response = await api.post("/api/parent/verify-password/request", {
       email,
     });
     return response.data;
@@ -94,7 +94,7 @@ export const requestVerificationToken = async (email) => {
 // Verify Email
 export const verifyEmail = async (code) => {
   try {
-    const response = await api.post("/parent/verify-password/verify", { code });
+    const response = await api.post("/api/parent/verify-password/verify", { code });
     return response.data;
   } catch (error) {
     console.error(error);
@@ -104,7 +104,7 @@ export const verifyEmail = async (code) => {
 // Forgot Password(sends a reset password link to the user email)
 export const forgotPassword = async (email) => {
   try {
-    const response = await api.post("/parent/forgot-password", { email });
+    const response = await api.post("/api/parent/forgot-password", { email });
     return response.data;
   } catch (error) {
     throw error;
@@ -114,7 +114,7 @@ export const forgotPassword = async (email) => {
 // Resets password
 export const resetPassword = async (token, password) => {
   try {
-    const response = await api.post(`/parent/reset-password/${token}`, {
+    const response = await api.post(`/api/parent/reset-password/${token}`, {
       password,
     });
     console.log("Password reset successful:", response.data);
