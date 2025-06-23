@@ -18,7 +18,6 @@ const DashboardProfile = () => {
     getAllGeneratedStories();
   }, []);
 
-  console.log(user);
 
   return (
     <div className="p-5">

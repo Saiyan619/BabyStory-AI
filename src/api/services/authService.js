@@ -117,7 +117,7 @@ export const resetPassword = async (token, password) => {
     const response = await api.post(`/api/parent/reset-password/${token}`, {
       password,
     });
-    console.log("Password reset successful:", response.data);
+    // console.log("Password reset successful:", response.data);
   } catch (error) {
     console.error("Error resetting password:", error);
     throw error;

@@ -28,7 +28,7 @@ const DashboardHome = () => {
     // setSkeleton(true)
     try {
       const result = await generateAiStory(prompt);
-      console.log("Generated story:", result);
+      // console.log("Generated story:", result);
       setStory(result);
       setLoading(false);
       setPrompt("");

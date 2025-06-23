@@ -44,10 +44,10 @@ const SignUp = () => {
     }
   };
 
-  const handleGoogleLogin = () => {
-    console.log("Starting Google login");
-    authService.googleAuth();
-  };
+  // const handleGoogleLogin = () => {
+  //   console.log("Starting Google login");
+  //   authService.googleAuth();
+  // };
 
   return (
     <div>

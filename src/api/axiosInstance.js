@@ -13,8 +13,8 @@ api.interceptors.request.use((config) => {
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
-  console.log("Sending request with headers:", config.headers);
-  console.log("Token retrieved for request:", token);
+  // console.log("Sending request with headers:", config.headers);
+  // console.log("Token retrieved for request:", token);
   return config;
 });
 

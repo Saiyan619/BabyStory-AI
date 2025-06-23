@@ -26,7 +26,7 @@ export const getAllGeneratedStories = async () => {
 export const getStoryById = async (id) => {
   try {
     const res = await api.get(`/api/story/${id}`);
-    console.log(res.data);
+    // console.log(res.data);
     return res.data;
   } catch (error) {
     console.log(error);
