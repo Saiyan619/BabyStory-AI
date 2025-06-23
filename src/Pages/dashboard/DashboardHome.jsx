@@ -40,13 +40,7 @@ const DashboardHome = () => {
     }
   };
 
-  console.log(story);
 
-  const suggestedStoryChips = [
-    { name: "The Brave Knight and the Princess" },
-    { name: "Whispers in the Haunted Library" },
-    { name: "Journey to the Sky Islands" },
-  ];
   return (
     <div>
       <div className="">
@@ -104,21 +98,6 @@ const DashboardHome = () => {
           </button>
         </div>
 
-        <div className=" flex items-center flex-col mt-3">
-          <span className="font-semibold">Stories you might like</span>
-          <div className="flex items-center justify-center gap-3 mt-5 flex-wrap">
-            {suggestedStoryChips.map((chip, index) => {
-              return (
-                <div
-                  key={index}
-                  className="bg-blue-200 p-2 text-sm rounded-full"
-                >
-                  {chip.name}
-                </div>
-              );
-            })}
-          </div>
-        </div>
       </div>
 
       {loading ? (
