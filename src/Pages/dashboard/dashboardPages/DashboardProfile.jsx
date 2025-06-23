@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useAuthStore } from "../../../store/authStore";
 import useStoryStore from "../../../store/storyStore";
 
@@ -27,7 +27,7 @@ const DashboardProfile = () => {
       <div className="flex flex-col gap-3 mt-5">
         <div>
           <span className="font-bold text-lg">Your child Name</span>
-          <p>{user?.name}</p>
+          <p>{user?.name === "" ? "No name" : user?.name}</p>
         </div>
 
         <div>
@@ -35,7 +35,8 @@ const DashboardProfile = () => {
           <p>{user?.email}</p>
         </div>
 
-         <div>
+        <div>
+  
                         <Link className='underline text-sm' to='/forgotpassword'>
                           forgot password
                         </Link>
