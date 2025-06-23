@@ -20,7 +20,7 @@ const DashboardHome = () => {
 
   function handlePromptInput(e) {
     setPrompt(e.target.value);
-    console.log(e.target.value);
+    // console.log(e.target.value);
   }
 
   const generateStory = async () => {
