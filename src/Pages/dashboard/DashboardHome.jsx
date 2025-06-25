@@ -9,13 +9,16 @@ import { useAuthStore } from "../../store/authStore";
 import CreatedStory from "./component/CreatedStory";
 import Skeleton from "./component/Skeleton";
 import { useUiStore } from "../../store/UiStore";
+import AlertError from "../../globalcomponents/AlertError";
 
 const DashboardHome = () => {
   const [prompt, setPrompt] = useState("");
   const [story, setStory] = useState(null);
-  const [skeleton, setSkeleton] = useState(false);
+  // const [skeleton, setSkeleton] = useState(false);
   const loading = useUiStore((state) => state.loading);
   const setLoading = useUiStore((state) => state.setLoading);
+  const error = useUiStore((state) => state.error);
+  const setError = useUiStore((state) => state.setError);
   // const user = useAuthStore((state)=>state.user)
 
   function handlePromptInput(e) {
@@ -36,6 +39,8 @@ const DashboardHome = () => {
     } catch (err) {
       setLoading(false);
       // setSkeleton(false)
+      setError(true);
+      setTimeout(() => setError(false), 3000);
       console.error("Failed to generate story:", err);
     }
   };
@@ -43,6 +48,7 @@ const DashboardHome = () => {
 
   return (
     <div>
+      {error ?  <AlertError /> : ""}
       <div className="">
         <DashHomeHeader />
         <div className="mt-5 flex items-center justify-center flex-col gap-3">
