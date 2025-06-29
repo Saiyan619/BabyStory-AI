@@ -1,12 +1,51 @@
-# React + Vite
+# 👶✨ BabyStory AI – Personalized AI-Powered Story Generator for Kids
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**BabyStory AI** is an AI-powered web application that generates personalized baby and kids' stories from simple text prompts. Designed for parents and storytellers, the app creates unique narratives tailored to a child’s name, theme, and imagination — all powered by artificial intelligence.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🧠 Generate original baby stories from custom prompts using **OpenAI’s GPT model**
+- ✍️ Personalize stories with child’s name, interests, and storytelling tone
+- 📖 Display the generated story in a clean, reader-friendly format
+- 🎨 Optional illustrations using AI image APIs (if integrated)
+- 🔄 Regenerate or edit story content on the fly
+- 📱 Fully responsive UI for phones, tablets, and desktops
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- [React.js](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [DaisyUI](https://daisyui.com/)
+
+### AI / Backend
+- [OpenAI API](https://platform.openai.com/) (for story generation)
+- [Node.js](https://nodejs.org/) + [Express.js](https://expressjs.com/) *(if backend is used)*
+- Optional: [Cloudinary](https://cloudinary.com/) or [Replicate](https://replicate.com/) for image generation
+
+---
+
+## 📦 Installation
+
+### Prerequisites
+
+- Node.js & npm installed
+- OpenAI API key
+- (Optional) Image API key if using AI-generated illustrations
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/babystory-ai.git
+cd babystory-ai
+
+npm install
+
+VITE_Gemini_API_KEY=your_gemini_api_key
+
+npm run dev
